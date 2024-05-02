@@ -108,7 +108,7 @@ class ResNetEncoder(nn.Module):
         self.blocks_sizes = blocks_sizes
         self.in_out_block_sizes = list(zip(blocks_sizes, blocks_sizes[1:]))
         self.blocks = nn.ModuleList([
-            *[ResNetLayer(in_channels * block.expansion, 
+            *[ResNetLayer(in_channels, 
                           out_channels, n=n, activation=activation, 
                           block=block, downsampling=downsampling, *args, **kwargs) 
               for (in_channels, out_channels), n in zip(self.in_out_block_sizes, deepths)],
